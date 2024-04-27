@@ -1,36 +1,19 @@
-# Welcome to Remix + Vite!
 
-📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/guides/vite) for details on supported features.
+Remix default template with Single Fetch enabled, vercelPreset included, and a loader in _index.tsx that just returns json({}).
 
-## Development
+When I deploy this to vercel and run it, I get the following error.
 
-Run the Vite dev server:
 
-```shellscript
-npm run dev
 ```
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
+TypeError: headers.getSetCookie is not a function or its return value is not iterable
+    at proxyResponseToResponseStub (/var/task/node_modules/.pnpm/@remix-run+server-runtime@2.9.1_typescript@5.4.5/node_modules/@remix-run/server-runtime/dist/single-fetch.js:292:25)
+    at /var/task/node_modules/.pnpm/@remix-run+server-runtime@2.9.1_typescript@5.4.5/node_modules/@remix-run/server-runtime/dist/single-fetch.js:61:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Promise.all (index 1)
+    at async /var/task/node_modules/.pnpm/@remix-run+server-runtime@2.9.1_typescript@5.4.5/node_modules/@remix-run/server-runtime/dist/single-fetch.js:39:19
+    at async callDataStrategyImpl (/var/task/node_modules/.pnpm/@remix-run+router@1.16.0/node_modules/@remix-run/router/dist/router.cjs.js:4169:17)
+    at async callDataStrategy (/var/task/node_modules/.pnpm/@remix-run+router@1.16.0/node_modules/@remix-run/router/dist/router.cjs.js:3702:19)
+    at async loadRouteData (/var/task/node_modules/.pnpm/@remix-run+router@1.16.0/node_modules/@remix-run/router/dist/router.cjs.js:3677:19)
+    at async queryImpl (/var/task/node_modules/.pnpm/@remix-run+router@1.16.0/node_modules/@remix-run/router/dist/router.cjs.js:3522:20)
+    at async Object.query (/var/task/node_modules/.pnpm/@remix-run+router@1.16.0/node_modules/@remix-run/router/dist/router.cjs.js:3416:18)
 ```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
